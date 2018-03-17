@@ -254,6 +254,7 @@ declare namespace CKEDITOR {
             isVisible(): boolean;
             mergeSiblings(inlineOnly?: boolean): void;
             moveChildren(target: element, toStart?: boolean): void;
+            remove(preserveChildren?: boolean): node;
             removeAttribute(name: string): void;
             removeAttributes(attributes?: string[]): void;
             removeClass(className: string): void;
@@ -456,7 +457,7 @@ declare namespace CKEDITOR {
         class nodeList {
             constructor(nativeList: Object);
             count(): number;
-            getItem(index: number): node;
+            getItem(index: number): any;
         }
 
 
@@ -1124,6 +1125,7 @@ declare namespace CKEDITOR {
         title: any;
         toolbar: any;
         ui: ui;
+        undoManager: any;
         widgets: plugins.widget.repository;
         window: dom.window;
         constructor(instanceConfig?: Object, element?: dom.element, mode?: number);
@@ -1142,7 +1144,7 @@ declare namespace CKEDITOR {
         createFakeParserElement(realElement: Object, className: Object, realElementType: Object, isResizable: Object): void;
         createRange(): dom.range;
         destroy(noUpdate?: boolean): void;
-		editable(): editable | null;
+        editable(): editable | null;
         editable(elementOrEditable: dom.element): void;
         editable(elementOrEditable: editable): void;
         elementPath(startNode?: dom.node): dom.elementPath;
@@ -1325,8 +1327,8 @@ declare namespace CKEDITOR {
 
 
     interface dataProcessor {
-        toDataFormat(html: string, fixForBody: string): void;
-        toHtml(data: string, fixForBody?: string): void;
+        toDataFormat(html: string, fixForBody: string): any;
+        toHtml(data: string, fixForBody?: string): any;
     }
 
     class htmlDataProcessor {
@@ -1371,7 +1373,22 @@ declare namespace CKEDITOR {
 
 
     class dtd {
-
+        static $block: Object;
+        static $blockLimit: Object;
+        static $cdata: Object;
+        static $editable: Object;
+        static $empty: Object;
+        static $inline: Object;
+        static $intermediate: Object;
+        static $list: Object;
+        static $listItem: Object;
+        static $nonBodyContent: Object;
+        static $nonEditable: Object;
+        static $object: Object;
+        static $removeEmpty: Object;
+        static $tabIndex: Object;
+        static $tableContent: Object;
+        static $transparent: Object;
     }
 
 
